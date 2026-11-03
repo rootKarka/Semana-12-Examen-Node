@@ -99,4 +99,68 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className
+                  className={`flex items-center px-3 py-2 rounded-md text-sm font-semibold transition-colors duration-200 ${
+                    isActive
+                      ? 'text-yellow-400 font-bold border-b-2 border-yellow-400'
+                      : 'text-white hover:text-yellow-300 hover:bg-blue-600/40'
+                  }`}
+                >
+                  {item.icon}
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Botón Menú Responsive (Hamburguesa) */}
+          <div className="flex md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              className="p-2 rounded-md text-white hover:bg-blue-600 focus:outline-none"
+            >
+              <span className="sr-only">Abrir menú</span>
+              {!isOpen ? (
+                <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              ) : (
+                <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Menú Desplegable Móvil */}
+      {isOpen && (
+        <div className="md:hidden bg-[#1e40af] border-t border-blue-500/30 px-2 pt-2 pb-4 space-y-1 shadow-inner">
+          {navItems.map((item) => {
+            const isActive =
+              item.href === '/'
+                ? pathname === '/'
+                : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center px-4 py-2.5 rounded-md text-base font-medium transition ${
+                  isActive
+                    ? 'bg-blue-800 text-yellow-400 font-bold'
+                    : 'text-white hover:bg-blue-700'
+                }`}
+              >
+                {item.icon}
+                <span className="ml-2">{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </header>
+  );
+}

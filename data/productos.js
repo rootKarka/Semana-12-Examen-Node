@@ -5,7 +5,7 @@ export const productos = [
     nombre: 'Disco de Embrague PHC Valeo',
     categoria: 'DISCO, PLATO Y COLLARÍN DE EMBRAGUE',
     marca: 'PHC Valeo',
-    imagen: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80',
+    imagen: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=600&q=80',
     descripcion: 'Disco de embrague reforzado de alta durabilidad para camiones y buses de carga pesada. Fabricación coreana con fricción de alta resistencia al calor.',
     precio: 'S/ 280.00',
     compatibilidad: 'Hyundai HD78, Kia Hyundai County'
@@ -37,3 +37,5 @@ export const productos = [
 export function getProductoBySlug(slug) {
   return productos.find((p) => p.slug === slug);
 }
+
+export default productos;
